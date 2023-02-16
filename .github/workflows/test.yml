@@ -1,0 +1,61 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - uses: actions/cache@v3
+        id: node_modules_cache_id
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
+
+      - if: ${{ steps.node_modules_cache_id.outputs.cache-hit != 'true' }}
+        run: npm ci
+      - run: npm run test
+      - run: npm run build
+
+  notify_succeed:
+    if: ${{ success() }}
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Notify to Slack channel
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_INCOMING_WEBHOOK_URL }}
+          SLACK_USERNAME: GitHub Actions
+          SLACK_TITLE: '${{github.event.pull_request.title}} Workflow Succeeded :ok:'
+          SLACK_ICON: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
+          SLACK_MESSAGE: 'Run number : #${{ github.run_number }}'
+
+  notify_failure:
+    if: ${{ failure() }}
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Notify to Slack channel
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_INCOMING_WEBHOOK_URL }}
+          SLACK_USERNAME: GitHub Actions
+          SLACK_TITLE: '${{github.event.pull_request.title}} Workflow failed :ng:'
+          SLACK_ICON: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
+          SLACK_COLOR: danger
+          SLACK_MESSAGE: 'Run number : #${{ github.run_number }}'

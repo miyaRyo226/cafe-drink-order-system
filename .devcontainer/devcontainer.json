@@ -1,0 +1,62 @@
+// See https://containers.dev/implementors/json_reference/ for configuration reference
+{
+	"name": "Cafe Drink Order System Project",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	"remoteUser": "node",
+	"features": {
+		"ghcr.io/devcontainers/features/git:1": {},
+		"ghcr.io/devcontainers/features/github-cli:1": {}
+	},
+	"postCreateCommand": "yarn install --frozen-lockfile",
+	"shutdownAction": "stopContainer",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"donjayamanne.githistory",
+				"mhutchie.git-graph",
+				"donjayamanne.git-extension-pack",
+				"esbenp.prettier-vscode",
+				"dbaeumer.vscode-eslint",
+				"hoovercj.vscode-settings-cycler",
+				"formulahendry.auto-rename-tag",
+				"steoates.autoimport",
+				"wix.vscode-import-cost",
+				"yzhang.markdown-all-in-one",
+				"bradlc.vscode-tailwindcss",
+				"GitHub.codespaces",
+				"GitHub.vscode-pull-request-github",
+				"me-dutour-mathieu.vscode-github-actions"
+			],
+			"settings": {
+				"search.exclude": {
+					"**/node_modules": true
+				},
+				"files.exclude": {
+					"**/node_modules": true
+				},
+				"editor.formatOnSave": true,
+				"tailwindCSS.classAttributes": ["class", "className", "ngClass"],
+				"tailwindCSS.codeActions": true,
+				"tailwindCSS.colorDecorators": true,
+				"tailwindCSS.emmetCompletions": true,
+				"tailwindCSS.hovers": true,
+				"tailwindCSS.lint.recommendedVariantOrder": "error",
+				"tailwindCSS.validate": true,
+				"tailwindCSS.suggestions": true,
+				"editor.formatOnSaveMode": "file",
+				"editor.defaultFormatter": "esbenp.prettier-vscode",
+				"editor.renderControlCharacters": true,
+				"editor.bracketPairColorization.enabled": true,
+				"editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+				"editor.codeActionsOnSave": { "source.fixAll": true },
+				"eslint.codeAction.showDocumentation": {
+					"enable": true
+				},
+				"eslint.codeActionsOnSave.mode": "all",
+				"eslint.ignoreUntitled": true
+			}
+		}
+	}
+}
