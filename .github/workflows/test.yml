@@ -27,9 +27,9 @@ jobs:
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
 
       - if: ${{ steps.node_modules_cache_id.outputs.cache-hit != 'true' }}
-        run: npm ci
-      - run: npm run test
-      - run: npm run build
+        run: yarn install --frozen-lockfile --ignore-scripts
+      - run: yarn test
+      - run: yarn build
 
   notify_succeed:
     if: ${{ success() }}
