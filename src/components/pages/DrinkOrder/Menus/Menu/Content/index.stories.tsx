@@ -1,6 +1,5 @@
 import { Story, Meta } from '@storybook/react/'
 import { ComponentProps } from 'react'
-
 import { MenuContent } from './index'
 
 export default {

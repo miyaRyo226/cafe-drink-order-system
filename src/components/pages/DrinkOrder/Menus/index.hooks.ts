@@ -1,9 +1,9 @@
 import { ComponentProps } from 'react';
 
-import { MenuContent } from './Content';
+import { MenuContent } from './Menu/Content';
 
 import { Button } from '@/components/common/Button';
-export const useMenuButton = () => {
+export const useMenus = () => {
     const menuContents: ReadonlyArray<ComponentProps<typeof MenuContent> & Pick<ComponentProps<typeof Button>, "buttonId">> = [
         { buttonId: "coffee", menuName: "コーヒー", price: 480 },
         { buttonId: "tea", menuName: "紅茶", price: 280 },
