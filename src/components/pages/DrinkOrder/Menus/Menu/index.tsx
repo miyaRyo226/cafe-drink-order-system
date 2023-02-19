@@ -10,7 +10,11 @@ export const Menu: FC<Props> = ({ buttonId, menuName, price }) => {
 	const { menuCount, onMenuClick } = useMenu()
 	return (
 		<div className='w-fit flex flex-col gap-6'>
-			<Button onClick={onMenuClick} key={buttonId} buttonId={buttonId}>
+			<Button
+				onClick={() => onMenuClick(price)}
+				key={buttonId}
+				buttonId={buttonId}
+			>
 				<MenuContent menuName={menuName} price={price} />
 				<div
 					id={`${buttonId}-count`}

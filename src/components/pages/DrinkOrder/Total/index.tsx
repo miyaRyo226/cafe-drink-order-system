@@ -1,17 +1,17 @@
 import { Card } from '@/components/common/Card'
 import { HorizontalLine } from '@/components/common/HorizontalLine'
+import { useMenuManage } from '@/components/consumer/menu'
 
 export const Total = () => {
-	const totalCount = 1
-	const totalPrice = 100
+	const { purchasedMenu } = useMenuManage()
 
 	return (
 		<Card>
 			<div className='flex flex-col gap-2 text-xl'>
 				<span>お会計</span>
 				<HorizontalLine />
-				<span id='count'>商品数：{totalCount}個</span>
-				<span id='price'>お会計：{totalPrice}円</span>
+				<span id='count'>商品数：{purchasedMenu.totalCount}個</span>
+				<span id='price'>お会計：{purchasedMenu.totalPrice}円</span>
 			</div>
 		</Card>
 	)
