@@ -3,7 +3,7 @@ import { ComponentProps } from 'react'
 import { MenuContent } from './index'
 
 export default {
-	title: 'Pages/DrinkOrder/MenuButton/Content',
+	title: 'Pages/DrinkOrder/Menus/Menu/Content',
 	component: MenuContent
 } as Meta<ComponentProps<typeof MenuContent>>
 
@@ -13,6 +13,6 @@ const Template: Story<ComponentProps<typeof MenuContent>> = (args) => (
 
 export const Default = Template.bind({})
 Default.args = {
-	menuName: '1coffee',
+	menuName: 'coffee',
 	price: 500
 }
