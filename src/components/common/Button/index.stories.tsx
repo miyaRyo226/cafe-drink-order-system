@@ -9,7 +9,7 @@ export default {
 } as Meta<ComponentProps<typeof Button>>
 
 const Template: Story<ComponentProps<typeof Button>> = (args) => (
-	<Button {...args} />
+	<Button {...args}>ボタン</Button>
 )
 
 export const Default = Template.bind({})
