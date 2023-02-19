@@ -1,6 +1,6 @@
 import { Card } from '@/components/common/Card'
 import { HorizontalLine } from '@/components/common/HorizontalLine'
-import { useMenuManage } from '@/components/consumer/menu'
+import { useMenuManage } from '@/consumer/menu'
 
 export const Total = () => {
 	const { purchasedMenu } = useMenuManage()

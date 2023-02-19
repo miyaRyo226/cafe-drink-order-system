@@ -1,6 +1,6 @@
 import { Menus } from './Menus'
 import { Total } from './Total'
-import { MenuManageProvider } from '@/components/context/menu'
+import { MenuManageProvider } from '@/context/menu'
 
 export const DrinkOrderPage = () => {
 	return (

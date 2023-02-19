@@ -1,8 +1,8 @@
 import { FC } from 'react'
-import { useMenus } from '../index.hooks'
 import { MenuContent } from './Content'
 import { useMenu } from './index.hooks'
 import { Button } from '@/components/common/Button'
+import { useMenus } from '@/components/pages/DrinkOrder/Menus/index.hooks'
 
 type Props = ReturnType<typeof useMenus>['menuContents'][number]
 

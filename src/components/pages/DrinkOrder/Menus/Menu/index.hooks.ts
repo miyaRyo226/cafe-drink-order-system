@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useMenuManage } from './../../../../consumer/menu/index';
+import { useMenuManage } from '@/consumer/menu';
 
 
 export const useMenu = () => {
